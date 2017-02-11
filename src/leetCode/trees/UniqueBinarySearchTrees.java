@@ -72,14 +72,7 @@ public class UniqueBinarySearchTrees {
 	public static void main(String[] args) {
 		TreeNode node = createTreeNode(2);
 		System.out.println(node.val);
-		List<TreeNode> unique_bst_list = generateTrees(3);
-		for(TreeNode t: unique_bst_list){
-			if(t== null){
-				System.out.println("NULL");
-			}else{
-				System.out.println(t.val);
-			}
-		}
+		generateTrees(3);
 	}
 
 }
