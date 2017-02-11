@@ -65,8 +65,7 @@ public class UniqueBinarySearchTrees {
 		}
 		return uniqueBstList;
 	}
-
-
+	
 	private static TreeNode createTreeNode(int val) {
 		TreeNode node = new TreeNode(val);
 		node.left = null;
