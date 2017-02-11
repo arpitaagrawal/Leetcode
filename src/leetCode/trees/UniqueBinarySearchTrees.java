@@ -44,10 +44,15 @@ public class UniqueBinarySearchTrees {
 		}else if(SI> EI){
 			uniqueBstList.add(null);
 		}else{
-			// Create all combinations of left list
+			
 			for(int curHead=SI; curHead<=EI; curHead++){
+				// Create all combinations of left subtrees
 				List<TreeNode> leftSubTreesList = generateUniqueBST(n_arr, SI, curHead-1);
+				
+				// Create all combinations of right subtrees
 				List<TreeNode> rightSubTreesList = generateUniqueBST(n_arr, curHead+1, EI);
+				
+				// Take cross product of left subtrees and right subtrees and make a list of complete trees
 				for(TreeNode leftSubTree : leftSubTreesList){
 					for(TreeNode rightSubTree : rightSubTreesList){
 						TreeNode curHeadNode = createTreeNode(n_arr[curHead]);
