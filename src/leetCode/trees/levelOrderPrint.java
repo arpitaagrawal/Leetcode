@@ -28,13 +28,19 @@ import java.util.Queue;
  *         current node list is empty, start dequeing the child node list, in
  *         fifo order repeat the process.
  * 
+ *         Better Approach : could have done this with just once queue by
+ *         mainitaining the number of elements added in each level before going
+ *         into that level: Level1: 1, size =1, add child nodes for size, take
+ *         the size of queue, start poping out till size queue- take size again
+ *         repeat till all nodes are processed
+ * 
  */
 public class levelOrderPrint {
 
 	public List<List<Integer>> levelOrder(TreeNode root) {
 
 		List<List<Integer>> levelOrderList = new ArrayList<List<Integer>>();
-		if(root == null){
+		if (root == null) {
 			return levelOrderList;
 		}
 
