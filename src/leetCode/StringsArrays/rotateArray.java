@@ -11,10 +11,16 @@ package leetCode.StringsArrays;
  * 
  *         Question taken from leetcode:
  *         https://leetcode.com/problems/rotate-array/
+ *         
+ *         [1,2,3] , 1
+ *         Expected : [3,1,2]
+ *         Output : [3,2,1]
+ *         
+ *         
  */
 public class rotateArray {
 
-	public void rotate(int[] nums, int k) {
+	public static void rotate(int[] nums, int k) {
 
 		int arrLength = nums.length;
 		while (k > arrLength)
@@ -34,4 +40,8 @@ public class rotateArray {
 		}
 	}
 
+	public static void main(String[] args){
+		int[] arr = new int[]{1,2,3};
+		rotate(arr, 1);
+	}
 }
