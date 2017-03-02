@@ -1,4 +1,4 @@
-package ArraysStrings;
+package leetCode.StringsArrays;
 
 public class AandS {
 
