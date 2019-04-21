@@ -63,5 +63,25 @@ public class AnimalShelter {
 		
 		return poppedAnimal;
 	}
+	
+	
+	private static void testAnimalShelter() {
+	
+		AnimalShelter animalShelter = new AnimalShelter();
+		animalShelter.enqueue("CAT1");
+		animalShelter.enqueue("CAT2");
+		System.out.println(animalShelter.popAny());
+		animalShelter.enqueue("CAT3");
+		animalShelter.enqueue("DOG1");
+		animalShelter.enqueue("CAT4");
+		System.out.println(animalShelter.popDog());
+		animalShelter.enqueue("CAT5");
+		animalShelter.enqueue("DOG2");
+		animalShelter.enqueue("DOG3");
+		animalShelter.enqueue("DOG4");
+		System.out.println(animalShelter.popDog());
+		animalShelter.enqueue("CAT6");
+		System.out.println(animalShelter.popCat());
+	}
 
 }
