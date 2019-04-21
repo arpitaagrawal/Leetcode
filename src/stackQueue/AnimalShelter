@@ -4,13 +4,16 @@ import java.util.Queue;
 /**
  * @author arpita
  *
- *         Method 1 : Cretae a single queue of 1/2 --> 1 for cat, 2 for dog pop
- *         cat --> check the top of the queue --> if cat return else keep
- *         popping the dogs --> put them in a second queue if asked for cat
- *         again --> pop from the orig queue and keep adding in the second queue
- *         and stop when you find the cat and return when asked for dog pop from
- *         the second queue and return
- * 
+ *        Create a queue and keep adding cats and dogs in it
+ *        When pop is called for Dog:
+ *        	Peek if top animal is Dog or not, keep popping and pushing into the temp queue
+ *        	Stop when you find a dog and return
+ *        
+ *        When pop dog is called return from the temp queue
+ *        
+ *        When pop cat is called check for cat in the original queue if found
+ *	  return else keep poping and pushing into the temp queue.
+ *
  * 
  */
 public class AnimalShelter {
