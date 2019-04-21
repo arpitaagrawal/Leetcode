@@ -1,0 +1,52 @@
+
+/**
+ * @author arpita
+ *
+ *  Queue : First in first out
+ *  Stack : Last in first out
+ *  
+ *  Queue using a stack
+ *  push --> pushes at the top of the list
+ *  pop --> pops at the top of the list
+ *  Queue : 
+ */
+public class MyQueue {
+
+	private SingleArrayStack originalStack = new SingleArrayStack();
+	private SingleArrayStack secondStack = new SingleArrayStack();
+	
+	/**
+	 * @param ele
+	 * @return
+	 * 
+	 *  Keep pushing all the elements in the list
+	 *  
+	 */
+	int push(int ele){
+		return originalStack.push(ele);
+	}
+	
+	/**
+	 * @return
+	 *  Keep poping and putting in a new stack --> this now is a queue --> we can pop when we want
+	 *  When the new stack is empty traverse through the orig stack and pop it into the new stack
+	 * 
+	 */
+	int pop(){
+		
+		if(secondStack.pop() == -1)
+			popElesFromOrigStack();
+		return secondStack.pop();
+	}
+
+	private void popElesFromOrigStack() {
+		
+		int poppedEle = originalStack.pop();
+		while(poppedEle != -1){
+			secondStack.push(poppedEle);
+			poppedEle = originalStack.pop();
+		}
+		
+	}
+
+}
