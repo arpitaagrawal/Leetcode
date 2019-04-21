@@ -1,0 +1,67 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ * @author arpita
+ *
+ *         Method 1 : Cretae a single queue of 1/2 --> 1 for cat, 2 for dog pop
+ *         cat --> check the top of the queue --> if cat return else keep
+ *         popping the dogs --> put them in a second queue if asked for cat
+ *         again --> pop from the orig queue and keep adding in the second queue
+ *         and stop when you find the cat and return when asked for dog pop from
+ *         the second queue and return
+ * 
+ * 
+ */
+public class AnimalShelter {
+
+	Queue<String> origQueue = new LinkedList<String>();
+	Queue<String> traversalQueue = new LinkedList<String>();
+
+	void enqueue(String animal) {
+		origQueue.add(animal);
+	}
+
+	String popCat() {
+		String poppedCat = "";
+
+		if (traversalQueue.size() < 1 || !traversalQueue.peek().startsWith("CAT")) {
+			while (origQueue.peek() != null && origQueue.peek().startsWith("DOG")) {
+				traversalQueue.add(origQueue.remove());
+			}
+			poppedCat = origQueue.remove();
+		}else{
+			poppedCat = traversalQueue.remove();
+		}
+		
+		return poppedCat;
+	}
+
+	String popDog() {
+		String poppedDog = "";
+
+		if (traversalQueue.size() < 1 || !traversalQueue.peek().startsWith("DOG")) {
+			while (origQueue.peek() != null && origQueue.peek().startsWith("CAT")) {
+				traversalQueue.add(origQueue.remove());
+			}
+			poppedDog = origQueue.remove();
+		}else{
+			poppedDog = traversalQueue.remove();
+		}
+		
+		return poppedDog;
+	}
+
+	String popAny() {
+		
+		String poppedAnimal = "";
+		
+		if (traversalQueue.size() < 1 ) {
+			poppedAnimal = origQueue.remove();
+		}else
+			poppedAnimal = traversalQueue.remove();
+		
+		return poppedAnimal;
+	}
+
+}
