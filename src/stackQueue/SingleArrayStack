@@ -1,0 +1,54 @@
+
+public class SingleArrayStack {
+
+	private int[] stackArr = new int[1];
+	private int curIndex = 0;
+	private int[] minArr = new int[1];
+	
+	private int curMinValue = Integer.MAX_VALUE;
+	int push(int ele){
+			
+		// Increase the size to twice when the stack is half full
+		if(curIndex > stackArr.length/2){
+			extendStackArr();
+		}
+		if(ele < curMinValue)
+			curMinValue = ele;
+			
+		minArr[curIndex] = curMinValue;
+		stackArr[curIndex]= ele;
+		curIndex ++;
+		return 1;
+	}
+	
+	int pop(){
+		
+		if(curIndex == 0)
+			return -1;
+		int ele = stackArr[curIndex];
+		curIndex --;
+		return ele;
+	}
+	int min(){
+		return curMinValue;
+	}
+	
+
+	
+	private void extendStackArr(){
+		int len = stackArr.length;
+		int[] updatedStackArr= new int[2*len];
+		int[] updatedMinArr= new int[2*len];
+		for(int i=0; i<len; i++){
+			updatedStackArr[i] = stackArr[i];
+			updatedMinArr[i] = minArr[i];
+		}
+		stackArr = updatedStackArr;
+		minArr = updatedMinArr;
+	}
+	
+	void printStack(){
+		for(int i=0; i<curIndex; i++)
+			System.out.println(stackArr[i]);
+	}
+}
