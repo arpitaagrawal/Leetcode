@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class StackOfPlates {
+
+	private static int threshold = 2;
+	private List<SingleArrayStack> stackList = new ArrayList<SingleArrayStack>();
+	
+	private int curLen = -1;
+	private int curStack = -1;
+	
+	int push(int ele){
+		
+		if(curStack == -1){
+			stackList.add(new SingleArrayStack());
+			curStack = 0;
+		}
+		
+		if(curLen % threshold == 0){
+			stackList.add(new SingleArrayStack());
+			curStack ++ ; 
+		}
+		stackList.get(curStack).push(ele);
+		
+		return 1;
+	}
+	
+	int pop(){
+		
+		curLen --;
+		int ele = stackList.get(curStack).pop();
+		if(curLen % threshold == 0)
+			curStack --;
+		
+		return ele;
+	}
+	
+	void printStack(){
+		for(int i=0; i<=curStack; i++){
+			stackList.get(curStack).printStack();
+	
+		}
+	}
+}
