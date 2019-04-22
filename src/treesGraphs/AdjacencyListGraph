@@ -1,0 +1,68 @@
+package treesGraphs;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class AdjacencyListGraph {
+	
+	Map<String, List<String>> graph = new HashMap<String, List<String>>();
+	
+	Set<String> visitedNodes = new HashSet<String>();
+
+	void addEdge(String fromEle, String toEle){
+		
+		List<String> edgeList = graph.get(fromEle) ;
+		if(edgeList == null){
+			edgeList = new ArrayList<String>();
+		}
+		edgeList.add(toEle);
+		graph.put(fromEle, edgeList);
+	}
+	
+	/**
+	 * @param startNode
+	 * @param endNode
+	 * @return
+	 * 
+	 * 	Start from the startNode
+	 * Iterate through the list one by one -->
+	 * pop 1 node --> if that is the end node return the path
+	 * else find path from this node to the end Node. If visited Node found ignore
+	 * 
+	 */
+	boolean findPath(String startNode, String endNode, List<String> path){
+		
+		System.out.println("Start Node :" + startNode + ", list: " + path);
+		boolean pathfound = false;
+		if(graph.get(startNode) != null){
+			for(String node : graph.get(startNode)){
+				
+				// If the node hasnt been visited already loop through its edges
+				if(!visitedNodes.contains(node)){
+					path.add(node);
+					visitedNodes.add(node);
+					// If this is the end Node end here.
+					if(node == endNode){						
+						pathfound = true;
+					}else{
+						// add this node to the visited node and continue finding the path
+						pathfound = findPath(node, endNode, path);
+					}
+					if(!pathfound)
+						path.remove(node);
+				}
+				if(pathfound)
+					break;
+					
+			}
+		}
+		
+		return pathfound;
+	}
+	
+	
+}
