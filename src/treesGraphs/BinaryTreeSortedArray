@@ -1,0 +1,34 @@
+package treesGraphs;
+
+public class BinaryTreeSortedArray {
+
+	TreeNode createMinimalBST(int array[]) {
+		return createMinimalBST(array, 0, array.length - 1);
+	}
+
+	private TreeNode createMinimalBST(int[] array, int i, int j) {
+		
+		if( (j<i) || (i >= array.length) || (j < 0))
+			return null;
+		
+		if(i==j)
+			return new TreeNode(array[i]);
+		
+		int mid = (j-i)/2;
+		
+		TreeNode node = new TreeNode(array[i + mid]);
+		node.left = createMinimalBST(array, i, i + mid-1);
+		node.right = createMinimalBST(array, i + mid+1, j);
+		
+		return node;
+	}
+	
+	void printInOrderTraversal(TreeNode node){
+		
+		if(node != null){
+			printInOrderTraversal(node.left);
+			System.out.println(node.val);
+			printInOrderTraversal(node.right);
+		}
+	}
+}
