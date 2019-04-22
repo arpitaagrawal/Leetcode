@@ -1,0 +1,44 @@
+package treesGraphs;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		testSortedArrayTree();
+	}
+
+	private static void testSortedArrayTree() {
+		BinaryTreeSortedArray binaryTreeSortedArray = new BinaryTreeSortedArray();
+		int[] arr = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		TreeNode node = binaryTreeSortedArray.createMinimalBST(arr);
+		binaryTreeSortedArray.printInOrderTraversal(node);
+
+	}
+
+	void testAdjacencyListGraph() {
+		AdjacencyListGraph adjacencyListGraph = new AdjacencyListGraph();
+
+		adjacencyListGraph.addEdge("Arpita", "Ayushi");
+		adjacencyListGraph.addEdge("Arpita", "Rekha");
+		adjacencyListGraph.addEdge("Arpita", "Pooja");
+		adjacencyListGraph.addEdge("Arpita", "Shikha");
+		adjacencyListGraph.addEdge("Arpita", "Shagun");
+		adjacencyListGraph.addEdge("Arpita", "Latha Aunty");
+		adjacencyListGraph.addEdge("Ayushi", "Ansh");
+		adjacencyListGraph.addEdge("Ayushi", "Mahesh");
+		adjacencyListGraph.addEdge("Ayushi", "Kumud");
+		adjacencyListGraph.addEdge("Karuna", "Hina");
+		adjacencyListGraph.addEdge("Ayushi", "Karuna");
+		adjacencyListGraph.addEdge("Rekha", "Latha Aunty");
+		adjacencyListGraph.addEdge("Rekha", "Karuna");
+		adjacencyListGraph.addEdge("Rekha", "Hina");
+		adjacencyListGraph.addEdge("Karuna", "Arpita");
+
+		List<String> path = new ArrayList<String>();
+		boolean pathAvailable = adjacencyListGraph.findPath("Arpita", "Hina", path);
+
+		System.out.println(path);
+	}
+}
